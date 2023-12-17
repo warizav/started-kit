@@ -1,3 +1,5 @@
+![image](https://github.com/warizav/started-kit/assets/70666595/ac89c739-a8be-4b65-bd2c-1cace54bd80c)
+
 Paso 1: Configuración del Proyecto
 Crea un nuevo directorio para tu proyecto e inicializa un nuevo repositorio de Git.
 bash
