@@ -36,7 +36,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
