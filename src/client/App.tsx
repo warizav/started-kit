@@ -1,6 +1,7 @@
 import './App.css';
 import useStoreFoods from './store';
 import { useShallow } from 'zustand/react/shallow';
+import { CeloDashboard } from './CeloDashboard';
 
 function App() {
   const [foods, increasePopulation] = useStoreFoods(
@@ -16,11 +17,9 @@ function App() {
       <h1>Start Kit</h1>
       <h1>{foods} around here...</h1>
       <button onClick={increaseFood}>one up</button>
+      <CeloDashboard />
     </div>
   );
 }
 
 export default App;
-function shallow(a: any, b: any): boolean {
-  throw new Error('Function not implemented.');
-}

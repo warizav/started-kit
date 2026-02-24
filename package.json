@@ -34,10 +34,13 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/serve-static": "^4.0.0",
     "@rollup/rollup-linux-x64-gnu": "^4.59.0",
+    "@tanstack/react-query": "^5.90.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
+    "viem": "^2.46.3",
+    "wagmi": "^2.19.5",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
