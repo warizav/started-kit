@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ContactPage } from './pages/ContactPage';
 import { PricingPage } from './pages/PricingPage';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { DashboardPage } from './pages/DashboardPage';
 import './App.css';
 
 type AgentType = 'support' | 'analytics' | 'content';
@@ -99,6 +102,7 @@ function DemoPage() {
           <p className="tagline">AI Agents for your business — live demo</p>
           <nav className="header-nav">
             <Link to="/pricing">Pricing</Link>
+            <Link to="/login">Sign in</Link>
             <Link to="/contact" className="nav-cta-sm">Get a demo</Link>
           </nav>
         </div>
@@ -190,7 +194,7 @@ function DemoPage() {
             deploy in 48 hours.
           </p>
           <div className="cta-buttons">
-            <Link to="/contact" className="cta-primary">Book a 15-min demo call</Link>
+            <Link to="/register" className="cta-primary">Start free trial →</Link>
             <Link to="/pricing" className="cta-secondary">See pricing →</Link>
           </div>
         </section>
@@ -211,6 +215,9 @@ export default function App() {
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </BrowserRouter>
   );
