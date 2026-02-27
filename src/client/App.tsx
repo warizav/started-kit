@@ -5,6 +5,8 @@ import { PricingPage } from './pages/PricingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { QualifyPage } from './pages/QualifyPage';
+import { DemoPersonalizedPage } from './pages/DemoPersonalizedPage';
 import './App.css';
 
 type AgentType = 'support' | 'analytics' | 'content';
@@ -218,6 +220,8 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/qualify" element={<QualifyPage />} />
+        <Route path="/demo/:id" element={<DemoPersonalizedPage />} />
       </Routes>
     </BrowserRouter>
   );

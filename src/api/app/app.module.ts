@@ -10,6 +10,7 @@ import { AuthModule } from '../auth/auth.module';
 import { ClientsModule } from '../clients/clients.module';
 import { PaymentsModule } from '../payments/payments.module';
 import { ProspectingModule } from '../prospecting/prospecting.module';
+import { QualifyModule } from '../qualify/qualify.module';
 import { join } from 'path';
 
 @Module({
@@ -20,6 +21,7 @@ import { join } from 'path';
     ClientsModule,
     PaymentsModule,
     ProspectingModule,
+    QualifyModule,
     DemoModule,
     LeadsModule,
     ServeStaticModule.forRoot({
