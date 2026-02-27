@@ -9,6 +9,7 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { AuthModule } from '../auth/auth.module';
 import { ClientsModule } from '../clients/clients.module';
 import { PaymentsModule } from '../payments/payments.module';
+import { ProspectingModule } from '../prospecting/prospecting.module';
 import { join } from 'path';
 
 @Module({
@@ -18,6 +19,7 @@ import { join } from 'path';
     AuthModule,
     ClientsModule,
     PaymentsModule,
+    ProspectingModule,
     DemoModule,
     LeadsModule,
     ServeStaticModule.forRoot({

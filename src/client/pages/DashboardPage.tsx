@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { ProspectsTab } from './ProspectsTab';
 
 interface User {
   id: string;
@@ -53,7 +54,7 @@ export function DashboardPage() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [configs, setConfigs] = useState<AgentConfig[]>([]);
   const [executions, setExecutions] = useState<Execution[]>([]);
-  const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'executions'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'prospects' | 'agents' | 'executions'>('overview');
   const [loading, setLoading] = useState(true);
   const [showNewAgent, setShowNewAgent] = useState(false);
   const [successBanner, setSuccessBanner] = useState(searchParams.get('success') === '1');
@@ -125,6 +126,12 @@ export function DashboardPage() {
             Overview
           </button>
           <button
+            className={activeTab === 'prospects' ? 'sidebar-item active' : 'sidebar-item'}
+            onClick={() => setActiveTab('prospects')}
+          >
+            🎯 Prospectos
+          </button>
+          <button
             className={activeTab === 'agents' ? 'sidebar-item active' : 'sidebar-item'}
             onClick={() => setActiveTab('agents')}
           >
@@ -153,7 +160,12 @@ export function DashboardPage() {
       <main className="dashboard-main">
         <header className="dashboard-header">
           <div>
-            <h1>{activeTab === 'overview' ? 'Overview' : activeTab === 'agents' ? 'My Agents' : 'Executions'}</h1>
+            <h1>
+              {activeTab === 'overview' ? 'Overview'
+                : activeTab === 'prospects' ? 'Prospectos'
+                : activeTab === 'agents' ? 'My Agents'
+                : 'Executions'}
+            </h1>
             <p className="dashboard-user">
               {user?.name ?? user?.email} · {user?.plan} plan
             </p>
@@ -171,6 +183,9 @@ export function DashboardPage() {
             <button onClick={() => setSuccessBanner(false)}>✕</button>
           </div>
         )}
+
+        {/* Prospects Tab */}
+        {activeTab === 'prospects' && <ProspectsTab />}
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (

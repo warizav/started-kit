@@ -17,6 +17,7 @@ model User {
   subscription     Subscription?
   agentConfigs     ClientAgentConfig[]
   executions       Execution[]
+  prospects        Prospect[]
 }
 
 model Subscription {
@@ -56,6 +57,62 @@ model Execution {
   latencyMs  Int      @default(0)
   successful Boolean  @default(true)
   createdAt  DateTime @default(now())
+}
+
+// ─── Prospecting ──────────────────────────────────────────────────────────────
+
+model Prospect {
+  id          String          @id @default(cuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company     String
+  contactName String
+  role        String?
+  email       String?
+  linkedin    String?
+  industry    String?
+  // Dolor principal descrito en las palabras del prospecto
+  painPoints  String
+  // Contexto extra: tamaño de empresa, herramientas que usa, etc.
+  context     String?
+  status      ProspectStatus  @default(NEW)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  attempts    OutreachAttempt[]
+}
+
+// Cada intento de contacto de la secuencia (1–5 toques)
+model OutreachAttempt {
+  id          String       @id @default(cuid())
+  prospectId  String
+  prospect    Prospect     @relation(fields: [prospectId], references: [id], onDelete: Cascade)
+  // Posición en la secuencia: 1=primer contacto, 2=follow-up, ..., 5=break-up
+  sequence    Int
+  channel     String       // email | linkedin | whatsapp
+  subject     String?
+  message     String
+  angle       String       // pain | social_proof | value_add | urgency | breakup
+  sentAt      DateTime?
+  outcome     OutcomeType?
+  outcomeNote String?
+  createdAt   DateTime     @default(now())
+}
+
+enum ProspectStatus {
+  NEW
+  SEQUENCE_GENERATED
+  IN_PROGRESS
+  REPLIED
+  MEETING_BOOKED
+  CONVERTED
+  DEAD
+}
+
+enum OutcomeType {
+  POSITIVE   // respondió con interés
+  NEUTRAL    // respondió pero no con interés claro
+  NEGATIVE   // rechazó
+  NO_REPLY   // no respondió
 }
 
 enum Plan {
