@@ -1,42 +1,123 @@
-.App {
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer;
+  font-size: 14px; font-weight: 600; transition: all 0.2s; white-space: nowrap;
+}
+.btn-primary { background: #6366f1; color: #fff; }
+.btn-primary:hover { background: #4f46e5; }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-secondary { background: transparent; color: #6366f1; border: 1.5px solid #6366f1; }
+.btn-secondary:hover { background: #6366f115; }
+.btn-ghost { background: transparent; color: #94a3b8; }
+.btn-ghost:hover { color: #e2e8f0; }
+.btn-lg { padding: 14px 28px; font-size: 16px; }
+.link-btn { background: none; border: none; color: #6366f1; cursor: pointer; font-size: inherit; padding: 0; }
+
+/* ===== LANDING ===== */
+.landing { min-height: 100vh; }
+
+.landing-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px; border-bottom: 1px solid #1e293b; position: sticky; top: 0;
+  background: #0a0a0fdd; backdrop-filter: blur(12px); z-index: 100;
+}
+.brand { font-size: 20px; font-weight: 800; color: #6366f1; letter-spacing: -0.5px; }
+.landing-header nav { display: flex; align-items: center; gap: 16px; }
+.landing-header nav a { color: #94a3b8; font-size: 14px; }
+.landing-header nav a:hover { color: #e2e8f0; }
+
+.hero {
+  max-width: 780px; margin: 0 auto; padding: 100px 24px 80px;
   text-align: center;
 }
+.hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; }
+.hero p { font-size: 18px; color: #94a3b8; margin-bottom: 36px; line-height: 1.6; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+.hero-social-proof { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 13px; color: #64748b; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ===== PRICING ===== */
+.pricing-section { padding: 80px 24px; text-align: center; }
+.pricing-section h2 { font-size: 36px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+.pricing-section > p { color: #64748b; margin-bottom: 48px; }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+
+.pricing-card {
+  background: #111827; border: 1px solid #1e293b; border-radius: 16px;
+  padding: 32px 28px; text-align: left; display: flex; flex-direction: column; gap: 16px;
+  transition: transform 0.2s;
+}
+.pricing-card:hover { transform: translateY(-4px); }
+.pricing-card--highlight { border-color: #6366f1; background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); }
+.pricing-card h3 { font-size: 18px; font-weight: 700; }
+.pricing-price { display: flex; align-items: baseline; gap: 2px; }
+.pricing-amount { font-size: 40px; font-weight: 800; }
+.pricing-period { color: #64748b; font-size: 14px; }
+.pricing-features { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.pricing-features li { color: #94a3b8; font-size: 14px; padding-left: 16px; position: relative; }
+.pricing-features li::before { content: '✓'; position: absolute; left: 0; color: #6366f1; }
+
+/* ===== AUTH ===== */
+.auth-container {
+  max-width: 380px; margin: 80px auto; padding: 40px;
+  background: #111827; border: 1px solid #1e293b; border-radius: 16px;
+}
+.auth-container h2 { font-size: 24px; font-weight: 800; margin-bottom: 24px; text-align: center; }
+.auth-form { display: flex; flex-direction: column; gap: 12px; }
+.auth-form input {
+  width: 100%; padding: 12px 14px; background: #0a0a0f; border: 1px solid #1e293b;
+  border-radius: 8px; color: #e2e8f0; font-size: 14px; outline: none;
+}
+.auth-form input:focus { border-color: #6366f1; }
+.auth-switch { text-align: center; margin-top: 16px; color: #64748b; font-size: 14px; }
+.error-banner {
+  background: #450a0a; border: 1px solid #7f1d1d; border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 16px; font-size: 14px; color: #fca5a5;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.error-close { background: none; border: none; color: #fca5a5; cursor: pointer; font-size: 18px; }
+
+/* ===== DASHBOARD ===== */
+.dashboard { min-height: 100vh; }
+.dashboard-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px; border-bottom: 1px solid #1e293b; background: #111827;
+}
+.dashboard-brand { font-size: 18px; font-weight: 800; color: #6366f1; }
+.dashboard-user { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #94a3b8; }
+.plan-badge {
+  background: #1e1b4b; color: #818cf8; border: 1px solid #312e81;
+  padding: 2px 8px; border-radius: 100px; font-size: 11px; font-weight: 700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dashboard-main { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+.dashboard-main h1 { font-size: 28px; font-weight: 800; margin-bottom: 32px; letter-spacing: -0.5px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.stat-card {
+  background: #111827; border: 1px solid #1e293b; border-radius: 12px; padding: 20px 24px;
+}
+.stat-label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.stat-value { font-size: 28px; font-weight: 800; }
+
+.api-demo { background: #111827; border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+.api-demo h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.api-result {
+  margin-top: 16px; padding: 16px; background: #0a0a0f; border-radius: 8px;
+  font-size: 13px; color: #a5f3fc; overflow-x: auto; border: 1px solid #1e293b;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.upgrade-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #111827 100%);
+  border: 1px solid #312e81; border-radius: 12px; padding: 28px;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
-}
+.upgrade-banner h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.upgrade-banner p { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+.upgrade-actions { display: flex; gap: 12px; flex-wrap: wrap; }
