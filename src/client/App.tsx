@@ -1,4 +1,7 @@
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
+import { ContactPage } from './pages/ContactPage';
+import { PricingPage } from './pages/PricingPage';
 import './App.css';
 
 type AgentType = 'support' | 'analytics' | 'content';
@@ -49,7 +52,7 @@ interface AgentResult {
   processingTime: number;
 }
 
-export default function App() {
+function DemoPage() {
   const [selectedAgent, setSelectedAgent] = useState<AgentType>('support');
   const [prompt, setPrompt] = useState('');
   const [context, setContext] = useState('');
@@ -90,8 +93,14 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div className="header-content">
-          <h1 className="logo">⚡ AgentOS</h1>
-          <p className="tagline">AI Agents that work for your business — live demo</p>
+          <Link to="/" className="logo-link">
+            <h1 className="logo">AgentOS</h1>
+          </Link>
+          <p className="tagline">AI Agents for your business — live demo</p>
+          <nav className="header-nav">
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/contact" className="nav-cta-sm">Get a demo</Link>
+          </nav>
         </div>
       </header>
 
@@ -150,11 +159,7 @@ export default function App() {
             </div>
 
             <button className="run-btn" onClick={runAgent} disabled={loading || !prompt.trim()}>
-              {loading ? (
-                <span className="loading-text">Agent is working...</span>
-              ) : (
-                `Run ${currentAgent.name}`
-              )}
+              {loading ? 'Agent is working...' : `Run ${currentAgent.name}`}
             </button>
           </div>
 
@@ -181,19 +186,12 @@ export default function App() {
         <section className="cta-section">
           <h2>Ready to deploy this agent for your business?</h2>
           <p>
-            This is a live demo on real AI infrastructure. We customize any agent for your specific
-            workflows, integrate with your tools, and deploy in 48 hours.
+            We customize any agent for your specific workflows, integrate with your tools, and
+            deploy in 48 hours.
           </p>
           <div className="cta-buttons">
-            <a
-              href="mailto:hello@agentos.dev?subject=Demo request for my business"
-              className="cta-primary"
-            >
-              Book a 15-min demo call
-            </a>
-            <a href="mailto:hello@agentos.dev?subject=Pricing inquiry" className="cta-secondary">
-              See pricing →
-            </a>
+            <Link to="/contact" className="cta-primary">Book a 15-min demo call</Link>
+            <Link to="/pricing" className="cta-secondary">See pricing →</Link>
           </div>
         </section>
       </main>
@@ -202,5 +200,18 @@ export default function App() {
         <p>Powered by Claude claude-sonnet-4-6 · Built for real business workflows</p>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DemoPage />} />
+        <Route path="/demo" element={<DemoPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
