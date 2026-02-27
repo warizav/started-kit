@@ -12,5 +12,13 @@ export default defineConfig({
   },
   build: {
     outDir: path.join(__dirname, 'dist/src/client')
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true
+      }
+    }
   }
 });
