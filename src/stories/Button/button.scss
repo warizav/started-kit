@@ -1,0 +1,74 @@
+.button {
+  padding: 10px 20px;
+  border: none;
+  flex-shrink: 0;
+  color: var(--Dark-Navy, #1a2a33);
+  text-align: center;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+  /* Heading (Extra Small) */
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  /* Modificador (modifier) para el tipo "large-yellow" */
+  &--large-yellow {
+    width: 410px;
+    height: 67px;
+    border-radius: 15px;
+    background: #f2b137;
+    box-shadow: 0px -8px 0px 0px #cc8b13 inset;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffc860;
+      box-shadow: 0px -8px 0px 0px #cc8b13 inset;
+    }
+  }
+  &--large-blue {
+    width: 410px;
+    height: 67px;
+    border-radius: 15px;
+    background: #31c3bd;
+    box-shadow: 0px -8px 0px 0px #118c87 inset;
+    cursor: pointer;
+    margin-top: 20px;
+
+    &:hover {
+      background: #65e9e4;
+      box-shadow: 0px -8px 0px 0px #118c87 inset;
+    }
+  }
+
+  &--small-yellow {
+    width: 146px;
+    height: 52px;
+    border-radius: 10px;
+    background: #f2b137;
+    box-shadow: 0px -4px 0px 0px #cc8b13 inset;
+    cursor: pointer;
+    &:hover {
+      background: #ffc860;
+      box-shadow: 0px -8px 0px 0px #cc8b13 inset;
+    }
+  }
+
+  // Estilos para botones pequeños azules
+  &--small-gray {
+    width: 146px;
+    height: 52px;
+    border-radius: 10px;
+    background: #a8bfc9;
+    box-shadow: 0px -4px 0px 0px #6b8997 inset;
+    cursor: pointer;
+    // Estilos para botones pequeños azules
+    &:hover {
+      background: #dbe8ed;
+      box-shadow: 0px -4px 0px 0px #6b8997 inset;
+    }
+  }
+}

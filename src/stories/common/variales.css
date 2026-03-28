@@ -1,0 +1,20 @@
+:root {
+  --primary_600: #8e24aa;
+  --primary_300: #ba68c8;
+  --primary_50: #e1bee7;
+  --neutral_50: #fafafa;
+  --neutral_300: #e0e0e0;
+  --neutral_600: #757575;
+  --info_50: #e3f2fd;
+  --info_300: #64b5f6;
+  --info_600: #1e88e5;
+  --success_50: #e0f7fa;
+  --success_300: #4dd0e1;
+  --success_600: #00acc1;
+  --warning_50: #fff3e0;
+  --warning_300: #ffb74d;
+  --warning_600: #fb8c00;
+  --error_50: #eee0e0;
+  --error_300: #e57373;
+  --error_600: #e53935;
+}
